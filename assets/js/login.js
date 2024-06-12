@@ -67,12 +67,13 @@ $(function () {
                 if (res.status !== 0) {
                     return layer.msg("登录失败")
                 }
+                res.user_pic = "../images/sample.jpg"
                 console.log(res)
                 layer.msg("登录成功")
                 // 将登录成功得到的token字符串保存到 localStorage中
                 localStorage.setItem("token", res.token)
                 //   跳转到后台主页
-                location.href = 'file:///Users/xushuxin/Desktop/html/大事件项目/index.html'
+                location.href = 'file:///Users/xushuxin/Desktop/html/bigevent/index.html'
             }
         })
     })
