@@ -17,7 +17,7 @@ $.ajaxPrefilter(function (options) {
     options.complete = function (res) {
         // console.log("执行了complete 回调")
         // console.log(res)
-        if (res.responseJSON.status === 401 && res.responseJSON.msg === '无效的token') {
+        if (res.responseJSON.status === 0 && res.responseJSON.msg === '无效的token') {
             //  1 强制清空token
             localStorage.removeItem("token")
             // 2. 强制跳转到登录页面
