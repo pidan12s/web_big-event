@@ -76,14 +76,45 @@ app.post("/api/login", (req, res) => {
 // 获取用户信息 这是一个有权限的api 接口
 app.get("/my/userinfo", (req, res) => {
     res.setHeader("Access-Control-Allow-Headers", "*")
-    // req.user.nickname = 'ad'
+    req.user.nickname = ''
     // req.user.user_pic = '../bigevent/assets/images/sample2.jpg'
     req.user.user_pic = ''
+    req.user.email = ''
+    req.user.password = ''
     console.log(req.user)
     res.send({
         status: 0,
         msg: "获取用户信息成功",
         data: req.user
+    })
+})
+// 提交用户的信息
+app.post("/my/userinfo", (req, res) => {
+    const body = req.body
+    console.log(body)
+    res.send({
+        status: 0,
+        data: req.body,
+        msg: "提交用户信息成功"
+    })
+})
+// 修改密码
+app.post("/my/updatePwd", (req, res) => {
+    const body = req.bdoy
+    res.send({
+        status: 0,
+        data: body,
+        msg: '修改密码成功'
+    })
+})
+// 更换头像
+app.post("/my/update/avatar", (req, res) => {
+    console.log(req.body)
+    res.send({
+        status: 0,
+        data: req.body,
+        msg: "更新头像成功"
+
     })
 })
 // 使用全局错误处理中间件， 解析捕获 jwt失败后产生的错误
